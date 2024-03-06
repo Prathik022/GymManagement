@@ -45,8 +45,6 @@ void menu() {
 int main()
 {
 	std::cout << "Welcome to fitness zone!\n";
-	Member obj;
-	obj.getExpiryDate(2);
 	menu();
 }
 
