@@ -33,6 +33,7 @@ public:
 	Member() {
 
 	}
+
 	Member(string name, int age, string email, string gender, int memberShipType, float height, float weight)
 		: name(name), age(age), email(email), gender(gender), memberShipType(memberShipType), height(height), weight(weight) {}
 
@@ -95,14 +96,10 @@ public:
 		// Handle overflow/underflow of months
 		mktime(localtm);
 		
-		cout << "Current Date: ";
+		//cout << "Current Date: ";
 		s1 << 1900 + localtm->tm_year << '-' << setw(2) << setfill('0') << 1 + localtm->tm_mon << '-' << setw(2) << setfill('0') << localtm->tm_mday << endl;
 		// Add months to current date
 		localtm->tm_mon += memberShipType;
-		// Print the expiry date
-		cout << "Expiry Date after " << memberShipType << " months: ";
-		
-		
 		s2 << 1900 + localtm->tm_year << '-' << setw(2) << setfill('0') << 1 + localtm->tm_mon << '-' << setw(2) << setfill('0') << localtm->tm_mday << endl;
 		
 	}

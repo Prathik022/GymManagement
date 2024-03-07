@@ -19,13 +19,11 @@ void menu() {
 			cout << "Give mailID";
 			string str;
 			cin >> str;
-			
 			obj1.printOneMember(str);
 			break;
 		}
 
 		case 3: {
-			
 			obj1.fillDetails();
 			break;
 		}
@@ -45,8 +43,6 @@ void menu() {
 int main()
 {
 	std::cout << "Welcome to fitness zone!\n";
-	Member obj;
-	obj.getExpiryDate(2);
 	menu();
 }
 

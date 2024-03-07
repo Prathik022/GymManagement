@@ -97,20 +97,26 @@ public:
 		cout << "----- Members -----" << endl;
 		for (const auto& pair : members) {
 			const Member& member = pair.second;
-			cout << "Email: " << pair.first << ", Name: " << member.name << ", Age: " << member.age << ", Gender: " << member.gender << ", BMI: " << member.BMI<< ", Expiry Date:"<< member.expiryDate << endl;
+			cout << "Email: " << pair.first << "\n Name: " << member.name << ", Age: " << member.age << ", Gender: " << member.gender << ", BMI: " << member.BMI << endl;
+			cout << "Weight Status: " << member.statusWeight << "Current Date: " << member.startDate << ", Expiry Date:" << member.expiryDate << ", Price:" << member.price << endl ;
 		}
 		cout << "-------------------" << endl;
 	}
 
 	void printOneMember(string str) {
 		cout << "----- Your Details -----" << endl;
+		bool flag = false;
 		for (const auto& pair : members) {
 			//cout << "\npair.first :" << pair.first << endl;
 			if (pair.first == str) {
+				flag = true;
 				const Member& member = pair.second;
-				cout << "Email: " << pair.first << ", Name: " << member.name << ", Age: " << member.age << ", Gender: " << member.gender << ", BMI: " << member.BMI << ", Expiry Date:" << member.expiryDate << endl;
-			}
-			else {
+				cout << "Email: " << pair.first << "\n Name: " << member.name << ", Age: " << member.age << ", Gender: " << member.gender << ", BMI: " << member.BMI << endl;
+				cout << "Weight Status: " << member.statusWeight << "Current Date: " << member.startDate << ", Expiry Date:" << member.expiryDate << ", Price:" << member.price << endl;
+			}else {
+				if (flag == false) {
+					break;
+				}
 				cout << "Your are not a member";
 			}
 		}
