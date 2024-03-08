@@ -2,24 +2,6 @@
 
 	// Attrubutes of gym members
 
-	string name;
-	int age;
-	string email;
-	string gender;
-	int memberShipType;
-	string memberShipTypeString;
-	int price;
-	double BMI;
-	string statusWeight;
-	stringstream s1;
-	stringstream s2;
-	string startDate = s1.str();
-	string expiryDate = s2.str();
-
-	float height;
-	float weight;
-
-	
 
 	void Member::setName(string name) {
 		name = name;
@@ -27,8 +9,8 @@
 	void Member::setAge(int age) {
 		age = age;
 	}
-	void Member::setEmail(string email) {
-		email = email;
+	void Member::setPhonenumber(int phonenumber) {
+		phonenumber = phonenumber;
 	}
 	void Member::setGender(string gender) {
 		gender = gender;
@@ -44,11 +26,6 @@
 	}
 
 	
-
-
-	
-
-
 
 	void Member::selectMemberShipType(int memberShipType) {
 		// depending up the plan membership will be calculated
@@ -98,7 +75,7 @@
 	}
 
 
-	void Member::getBmi(float height, float weight)
+	double Member::getBmi(float height, float weight)
 	{
 		// calculating BMI
 		BMI = weight / pow(height, 2);
@@ -114,11 +91,11 @@
 		else if (BMI >= 30) {
 			statusWeight = "Obesity";
 		}
-		return;
+		return BMI;
 	}
 
-	void Member::invoke(string email, string name, int age, string gender, int memberShipType, float height, float weight) {
-		setEmail(email);
+	void Member::invoke(int phonenumber, string name, int age, string gender, int memberShipType, float height, float weight) {
+		setPhonenumber(phonenumber);
 		setName(name);
 		setAge(age);
 		setGender(gender);

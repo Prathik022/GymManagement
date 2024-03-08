@@ -13,26 +13,27 @@ string mailId;
 DbConnect connect;
 
 	// function to add new members
-	void Admin::addMember(string& email, string& name, int age, string& gender, int memberShipType, float height, float weight) {
+	void Admin::addMember(int phonenumber, string& name, int age, string& gender, int memberShipType, float height, float weight) {
 		
 		Member obj;
-		obj.invoke(email, name, age, gender, memberShipType, height, weight);
-		connect.addToDB(email,name,age,gender,memberShipType,height,weight);
+		obj.invoke(phonenumber, name, age, gender, memberShipType, height, weight);
+		
+		connect.addToDB(phonenumber,name,gender,obj.memberShipTypeString,obj.BMI,obj.statusWeight,obj.price,age,height,weight);
 		cout << "added members successfully";
 	}
 
 	// getting input from the user
 	void Admin::fillDetails() {
-		string email, name, gender;
-		int age, memberShipType;
+		string name, gender;
+		int age, memberShipType,phonenumber;
 		float height, weight;
 		cout << "Add details" << "\n";
 		cout << "Name:";
 		cin >> name;
 		cout << "Age:\n";
 		cin >> age;
-		cout << "Email\n";
-		cin >> email;
+		cout << "PhoneNumber:\n";
+		cin >> phonenumber;
 		cout << "Gender:\n";
 		cin >> gender;
 		cout << "\n MemberShip Type 1)1 month(Rs 2000) 2)3months(Rs 3000) 3)6 months(Rs 5500) 4)12 months(Rs 9000) : ";
@@ -41,7 +42,7 @@ DbConnect connect;
 		cin >> height;
 		cout << "\n Weight(kg) : ";
 		cin >> weight;
-		addMember(email, name, age, gender, memberShipType, height, weight);
+		addMember(phonenumber, name, age, gender, memberShipType, height, weight);
 
 	}
 
@@ -52,7 +53,7 @@ DbConnect connect;
 
 	// Function to display all members
 	void Admin::displayMembers() {
-		
+		connect.getDetails();
 		
 	}
 

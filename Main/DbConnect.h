@@ -12,5 +12,6 @@ using namespace std;
 class DbConnect {
 
 public:
-	void addToDB(string& email, string& name, int age, string& gender, int memberShipType, float height, float weight);
+	void addToDB(int phoneNumber, string& name, string& gender, string& memberShipTypeString, double BMI, string& statusWeight, int price, int age, float height, float weight);
+	void getDetails();
 };
