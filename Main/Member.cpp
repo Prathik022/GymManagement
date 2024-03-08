@@ -1,17 +1,7 @@
 #include "Member.h"
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <iomanip>
-#include <sstream> 
 
-#pragma warning(suppress : 4996)
-
-using namespace std;
-
-class Member {
 	// Attrubutes of gym members
-public:
+
 	string name;
 	int age;
 	string email;
@@ -26,38 +16,41 @@ public:
 	string startDate = s1.str();
 	string expiryDate = s2.str();
 
-public:
 	float height;
 	float weight;
 
-	Member() {
+	
 
+	void Member::setName(string name) {
+		name = name;
+	}
+	void Member::setAge(int age) {
+		age = age;
+	}
+	void Member::setEmail(string email) {
+		email = email;
+	}
+	void Member::setGender(string gender) {
+		gender = gender;
+	}
+	void Member::setmemberShipType(int n) {
+		memberShipType = n;
+	}
+	void Member::setHeight(int height) {
+		height = height;
+	}
+	void Member::setWeight(int weight) {
+		weight = weight;
 	}
 
-	Member(string name, int age, string email, string gender, int memberShipType, float height, float weight)
-		: name(name), age(age), email(email), gender(gender), memberShipType(memberShipType), height(height), weight(weight) {}
+	
 
 
-	void invoke(float height,float weight,int memberShipType) {
-		selectMemberShipType(memberShipType);
-		getBmi(height,weight);
-		getExpiryDate(memberShipType);
-	}
-
-	void printMemberDetails() {
-		// print the basic details
-		cout << "Basic Details of Member \n";
-		cout << "Name : " << name << "\n";
-		cout << "Plan Price : " << price << " Plan : " << memberShipTypeString << "\n";
-		cout << "Expiry Date : ";
-		getExpiryDate(memberShipType);
-		//BMI = getBmi(height, weight);
-		cout << "BMI : " << this->BMI << " " << this->statusWeight << "\n";
-	}
+	
 
 
 
-	void selectMemberShipType(int memberShipType) {
+	void Member::selectMemberShipType(int memberShipType) {
 		// depending up the plan membership will be calculated
 		// price for the gym
 		switch (memberShipType) {
@@ -87,7 +80,7 @@ public:
 	}
 
 
-	void getExpiryDate(int memberShipType) {
+	void Member::getExpiryDate(int memberShipType) {
 		// getting the current date and expiry date
 		// Get the current time
 		time_t now = time(0);
@@ -104,7 +97,8 @@ public:
 		
 	}
 
-	void getBmi(float height, float weight)
+
+	void Member::getBmi(float height, float weight)
 	{
 		// calculating BMI
 		BMI = weight / pow(height, 2);
@@ -123,4 +117,15 @@ public:
 		return;
 	}
 
-};
+	void Member::invoke(string email, string name, int age, string gender, int memberShipType, float height, float weight) {
+		setEmail(email);
+		setName(name);
+		setAge(age);
+		setGender(gender);
+		setmemberShipType(memberShipType);
+		setHeight(height);
+		setWeight(weight);
+		selectMemberShipType(memberShipType);
+		getBmi(height, weight);
+		getExpiryDate(memberShipType);
+	}

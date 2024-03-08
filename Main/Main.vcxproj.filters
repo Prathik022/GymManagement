@@ -44,5 +44,8 @@
     <ClInclude Include="DbConnect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
