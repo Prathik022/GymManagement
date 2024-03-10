@@ -79,7 +79,6 @@ bool DbConnect::getFromDB(string& phonenumber, string& pass) {
         sql::Driver* driver = get_driver_instance();
         sql::Connection* con = driver->connect(server, username, password);
         con->setSchema("prathik");
-        cout << "database connected";
 
         // Construct the SQL query to check if the user exists based on both username and password
         string query = "SELECT COUNT(*) FROM admin WHERE phonenumber = ? AND password = ?";
@@ -179,5 +178,65 @@ void DbConnect::getOneMemberDetails(string& phonenumber, string& pass) {
         cout << "Error checking data: " << e.what() << endl;
         system("pause");
         exit(1);
+    }
+}
+
+int DbConnect::getTotalMembers() {
+    try {
+        sql::Driver* driver = get_driver_instance();
+        sql::Connection* con = driver->connect(server, username, password);
+        con->setSchema("prathik");
+
+        // Construct the SQL query to check if the user exists based on both username and password
+        string query = "SELECT COUNT(*) FROM member";
+        sql::PreparedStatement* pstmt = con->prepareStatement(query);
+        
+
+        // Execute the query
+        sql::ResultSet* result = pstmt->executeQuery();
+        result->next();
+        int userCount = result->getInt(1);
+
+        delete result;
+        delete pstmt;
+        delete con;
+        return userCount;
+    }
+    catch (sql::SQLException& e) {
+        cout << "Error checking user data: " << e.what() << endl;
+        system("pause");
+    }
+}
+
+double DbConnect::getBMIAverage() {
+    try {
+        sql::Driver* driver = get_driver_instance();
+        sql::Connection* con = driver->connect(server, username, password);
+        con->setSchema("prathik");
+
+        // Construct the SQL query to check if the user exists based on both username and password
+        string query = "SELECT BMI FROM member";
+        sql::PreparedStatement* pstmt = con->prepareStatement(query);
+
+        // Execute the query
+        sql::ResultSet* result = pstmt->executeQuery();
+        result->next();
+       
+        double total = 0.0;
+        int num_rows = getTotalMembers();
+        
+        while (result->next()) {
+            total += result->getDouble("BMI");
+        }
+        
+        double avg = total / num_rows;
+        delete result;
+        delete pstmt;
+        delete con;
+        return avg;
+    }
+    catch (sql::SQLException& e) {
+        cout << "Error checking user data: " << e.what() << endl;
+        system("pause");
     }
 }

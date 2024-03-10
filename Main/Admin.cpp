@@ -1,6 +1,8 @@
 #include "Admin.h"
 #include "Member.h"
 #include "DbConnect.h"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 int option;
 int totalMembers;
@@ -47,7 +49,7 @@ DbConnect connect;
 
 
 	int Admin::getTotalMembers() {
-		return totalMembers;
+		return connect.getTotalMembers();
 	}
 
 	// Function to display all members
@@ -63,7 +65,7 @@ DbConnect connect;
 	void Admin::startFunction() {
 
 		do {
-			cout << "1. Join New Member \n2. Get total Members \n3. Get average BMI of members\n4. Display all members\n5. exit : \n";
+			cout << ANSI_COLOR_YELLOW << "1. Join New Member \n2. Get total Members \n3. Get average BMI of members\n4. Display all members\n5. exit : \n"<< ANSI_COLOR_RESET;
 			
 			cin >> option;
 			switch (option) {
@@ -72,13 +74,13 @@ DbConnect connect;
 				break;
 			}
 			case 2: {
-				cout << getTotalMembers();
+				cout << "\nTotal members :";
+				cout << getTotalMembers() << endl;
 				break;
 			}
 			case 3: {
-				cout << "need to implement";
+				cout << connect.getBMIAverage();
 				break;
-				// need implementation
 			}
 			case 4:
 				displayMembers();

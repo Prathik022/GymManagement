@@ -55,6 +55,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="foodchart.txt" />
+    <Text Include="foodchart_active.txt" />
+    <Text Include="foodchart_notactive.txt" />
+    <Text Include="Ex1.txt" />
+    <Text Include="Ex2.txt" />
   </ItemGroup>
 </Project>

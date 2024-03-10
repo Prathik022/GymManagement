@@ -17,4 +17,6 @@ public:
 	bool getFromDB(string& phonenumber, string& pass);
 	bool checkMember(string& phonenumber, string& pass);
 	void getOneMemberDetails(string& phonenumber, string& pass);
+	int getTotalMembers();
+	double getBMIAverage();
 };

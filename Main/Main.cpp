@@ -1,15 +1,20 @@
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 #include <string>
 #include "Authentication.h"
 #include "Admin.h"
 #include "DbConnect.h"
+#include <windows.h>
+
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 using namespace std;
 Authentication obj1;
 Admin obj2;
 DbConnect obj3;
-string filename = "foodchart.txt";
+
 
 void menu() {
 	int option;
@@ -41,7 +46,7 @@ void menu() {
 			if (flag == true) {
 				int choice;
 				do{
-					cout << "1. Get Your Details :\n2. Get Food chart\n3. Get Exercise plan\n4. Exit";
+					cout << ANSI_COLOR_YELLOW << "1. Get Your Details :\n2. Get Food chart\n3. Get Exercise plan\n4. Exit"<< ANSI_COLOR_RESET;
 					cin >> choice;
 					switch (choice)
 					{
@@ -49,11 +54,50 @@ void menu() {
 						obj3.getOneMemberDetails(phonenumber, password);
 						break;
 					case 2: {
-						ifstream file(filename);
-						string line;
-						while (std::getline(file, line)) {
-							std::cout << line << std::endl;
+						int getChoice;
+						cout << "\n1. Active lifestyle\n2.In-active lifestyle\n";
+						cin >> getChoice;
+						if (getChoice == 1) {
+							ifstream file("foodchart_active.txt");
+							string line;
+							while (getline(file, line)) {
+								cout << line << std::endl;
+							}
 						}
+						else if (getChoice == 2) {
+							ifstream file("foodchart_notactive.txt");
+							string line;
+							while (getline(file, line)) {
+								cout << line << std::endl;
+							}
+						}
+						else {
+							cout << "\nGive the correct input\n";
+						}
+						break;
+					}
+					case 3: {
+						int getChoice;
+						cout << "\n1. Active lifestyle\n2.In-active lifestyle\n";
+						cin >> getChoice;
+						if (getChoice == 1) {
+							ifstream file("Ex1.txt");
+							string line;
+							while (getline(file, line)) {
+								cout << line << std::endl;
+							}
+						}
+						else if (getChoice == 2) {
+							ifstream file("Ex2.txt");
+							string line;
+							while (getline(file, line)) {
+								cout << line << std::endl;
+							}
+						}
+						else {
+							cout << "\nGive the correct input\n";
+						}
+						break;
 						break;
 					}
 					default:
@@ -91,11 +135,14 @@ void menu() {
 			cout << "Invalid choice! Please enter a valid option." << endl;
 		}
 	} while (option != 4);
+
 }
+
 
 	int main()
 	{
-		std::cout << "Welcome to fitness zone!\n";
+		//system("Color 8B");
+		cout << ANSI_COLOR_YELLOW << "\nWelcome to Fittness Zone" << ANSI_COLOR_RESET << endl;
 		menu();
 		return 1;
 	}
