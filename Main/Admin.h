@@ -10,7 +10,7 @@ class Admin {
 	/*Admin() {}*/
 
 public:
-	void addMember(int phonenumber , string& name, int age, string& gender, int memberShipType, float height, float weight);
+	void addMember(string& phonenumber ,string& password, string& name, int age, string& gender, int memberShipType, float height, float weight);
 	void fillDetails();
 	int getTotalMembers();
 	void displayMembers();

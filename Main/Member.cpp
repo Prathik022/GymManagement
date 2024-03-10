@@ -9,7 +9,7 @@
 	void Member::setAge(int age) {
 		age = age;
 	}
-	void Member::setPhonenumber(int phonenumber) {
+	void Member::setPhonenumber(string phonenumber) {
 		phonenumber = phonenumber;
 	}
 	void Member::setGender(string gender) {
@@ -94,7 +94,7 @@
 		return BMI;
 	}
 
-	void Member::invoke(int phonenumber, string name, int age, string gender, int memberShipType, float height, float weight) {
+	void Member::invoke(string phonenumber, string name, int age, string gender, int memberShipType, float height, float weight) {
 		setPhonenumber(phonenumber);
 		setName(name);
 		setAge(age);
@@ -105,4 +105,5 @@
 		selectMemberShipType(memberShipType);
 		getBmi(height, weight);
 		getExpiryDate(memberShipType);
+		
 	}

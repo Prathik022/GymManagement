@@ -16,7 +16,7 @@ public:
 
 	string name;
 	int age;
-	int phonenumber;
+	string phonenumber;
 	string email;
 	string gender;
 	string password;
@@ -39,7 +39,7 @@ public:
 
 	void setName(string name);
 	void setAge(int age);
-	void setPhonenumber(int phonenumber);
+	void setPhonenumber(string phonenumber);
 	void setGender(string gender);
 	void setmemberShipType(int n);
 	void setHeight(int height);
@@ -47,6 +47,6 @@ public:
 	void selectMemberShipType(int memberShipType);
 	void getExpiryDate(int memberShipType);
 	double getBmi(float height, float weight);
-	void invoke(int phonenumber, string name, int age, string gender, int memberShipType, float height, float weight);
+	void invoke(string phonenumber, string name, int age, string gender, int memberShipType, float height, float weight);
 	//void printMemberDetails();
 };
