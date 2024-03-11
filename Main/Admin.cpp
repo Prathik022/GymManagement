@@ -16,9 +16,16 @@ DbConnect connect;
 	// function to add new members
 	void Admin::addMember(string& phonenumber,string& password, string& name, int age, string& gender, int memberShipType, float height, float weight) {
 		Member obj;
-		obj.invoke(phonenumber, name, age, gender, memberShipType, height, weight);
-		connect.addToDB(phonenumber,password,name,gender,obj.memberShipTypeString,obj.BMI,obj.statusWeight,obj.price,age,height,weight);
-		cout << "Welcome " << name << " .Your are added to Fitness Gym.";
+		bool flag = connect.checkMember(phonenumber, password);
+		if (flag == false) {
+			obj.invoke(phonenumber, name, age, gender, memberShipType, height, weight);
+			connect.addToDB(phonenumber, password, name, gender, obj.memberShipTypeString, obj.BMI, obj.statusWeight, obj.price, age, height, weight);
+			cout << "Welcome " << name << " .Your are added to Fitness Gym.";
+		}
+		else {
+			cout << "\n You are already a member\n";
+		}
+		
 	}
 
 	// getting input from the user
