@@ -143,6 +143,7 @@ void menu() {
 	{
 		//system("Color 8B");
 		cout << ANSI_COLOR_YELLOW << "\nWelcome to Fittness Zone" << ANSI_COLOR_RESET << endl;
+		cout << "New Branch";
 		menu();
 		return 1;
 	}

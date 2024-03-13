@@ -1,5 +1,4 @@
 #include "DbConnect.h"
-#include "Member.h"
 #include "Admin.h"
 
 const string server = "localhost:3306";
@@ -26,7 +25,7 @@ void DbConnect::addToDB(string& phonenumber,string& pass, string& name, string& 
         pstmt->setDouble(10, weight);
         pstmt->setDouble(11, height);
         pstmt->execute();
-
+        
         //cout << "Data inserted into " << "user" << " table." << endl;
 
         delete pstmt;
