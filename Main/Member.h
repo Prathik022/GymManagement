@@ -1,10 +1,10 @@
 #pragma once
-#include "Member.h"
 #include <iostream>
 #include <string>
 #include <ctime>
 #include <iomanip>
 #include <sstream> 
+#include "Member.h"
 
 #pragma warning(suppress : 4996)
 
@@ -33,9 +33,7 @@ public:
 	float height;
 	float weight;
 
-	Member() {
-
-	}
+	/*Member();*/
 
 	void setName(string name);
 	void setAge(int age);

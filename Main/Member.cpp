@@ -1,5 +1,6 @@
 #include "Member.h"
 
+
 	// Attrubutes of gym members
 
 

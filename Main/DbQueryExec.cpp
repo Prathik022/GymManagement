@@ -1,11 +1,9 @@
+#include "DbQueryExec.h"
 #include "DbConnect.h"
 #include "Admin.h"
 
-const string server = "localhost:3306";
-const string username = "root";
-const string password = "prathik";
 
-void DbConnect::addToDB(string& phonenumber,string& pass, string& name, string& gender, string& memberShipTypeString, double BMI, string& statusWeight, int price, int age, float height, float weight) {
+void DbConnect::addToDB(string& phonenumber, string& pass, string& name, string& gender, string& memberShipTypeString, double BMI, string& statusWeight, int price, int age, float height, float weight) {
     try {
         sql::Driver* driver = get_driver_instance();
         sql::Connection* con = driver->connect(server, username, password);
@@ -16,9 +14,9 @@ void DbConnect::addToDB(string& phonenumber,string& pass, string& name, string& 
         pstmt->setString(1, phonenumber);
         pstmt->setString(2, pass);
         pstmt->setString(3, name);
-        pstmt->setString(4, gender );
+        pstmt->setString(4, gender);
         pstmt->setString(5, memberShipTypeString);
-        pstmt->setDouble(6, BMI );
+        pstmt->setDouble(6, BMI);
         pstmt->setString(7, statusWeight);
         pstmt->setInt(8, price);
         pstmt->setInt(9, age);
@@ -42,11 +40,8 @@ void DbConnect::getDetails() {
     try {
         sql::Driver* driver = get_driver_instance();
         sql::Connection* con = driver->connect(server, username, password);
-        
+
         con->setSchema("prathik");
-       
-
-
         string query = "SELECT * FROM  member";
         sql::PreparedStatement* pstmt = con->prepareStatement(query);
 
@@ -54,7 +49,7 @@ void DbConnect::getDetails() {
         sql::ResultSet* result = pstmt->executeQuery();
         result->next();
 
-        while (result->next() ){
+        while (result->next()) {
             cout << "\n PhoneNumber : " << result->getString("phonenumber");
             cout << "\t name :" << result->getString("name") << endl;
             cout << "\t BMI :" << result->getDouble("BMI") << endl;
@@ -109,7 +104,7 @@ bool DbConnect::getFromDB(string& phonenumber, string& pass) {
         system("pause");
     }
 }
-    
+
 bool DbConnect::checkMember(string& phonenumber, string& pass) {
     try {
         sql::Driver* driver = get_driver_instance();
@@ -161,14 +156,14 @@ void DbConnect::getOneMemberDetails(string& phonenumber, string& pass) {
         // Execute the query
         sql::ResultSet* result = pstmt->executeQuery();
         result->next();
-        
-            cout << "\n PhoneNumber : " << result->getString("phonenumber");
-            cout << "\t name :" << result->getString("name") << endl;
-            cout << "\t BMI :" << result->getDouble("BMI") << endl;
-            cout << "\t Status Weight:" << result->getString("statusWeight") << endl;
-            cout << "\t Plan :" << result->getString("memberShipTypeString") << endl;
-            cout << "\t Price :" << result->getString("price") << endl;
-        
+
+        cout << "\n PhoneNumber : " << result->getString("phonenumber");
+        cout << "\t name :" << result->getString("name") << endl;
+        cout << "\t BMI :" << result->getDouble("BMI") << endl;
+        cout << "\t Status Weight:" << result->getString("statusWeight") << endl;
+        cout << "\t Plan :" << result->getString("memberShipTypeString") << endl;
+        cout << "\t Price :" << result->getString("price") << endl;
+
         delete pstmt;
         delete con;
 
@@ -189,7 +184,7 @@ int DbConnect::getTotalMembers() {
         // Construct the SQL query to check if the user exists based on both username and password
         string query = "SELECT COUNT(*) FROM member";
         sql::PreparedStatement* pstmt = con->prepareStatement(query);
-        
+
 
         // Execute the query
         sql::ResultSet* result = pstmt->executeQuery();
@@ -220,14 +215,14 @@ double DbConnect::getBMIAverage() {
         // Execute the query
         sql::ResultSet* result = pstmt->executeQuery();
         result->next();
-       
+
         double total = 0.0;
         int num_rows = getTotalMembers();
-        
+
         while (result->next()) {
             total += result->getDouble("BMI");
         }
-        
+
         double avg = total / num_rows;
         delete result;
         delete pstmt;
